@@ -1,0 +1,4 @@
+[submodule "zigimg"]
+	path = zigimg
+	url = git@github.com:zigimg/zigimg.git
+	branch = master
