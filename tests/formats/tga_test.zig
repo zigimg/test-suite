@@ -420,3 +420,95 @@ test "Read ctc24 TGA file" {
         }
     }
 }
+
+test "Read matte-01 TGA file" {
+    const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/tga/matte-01.tga");
+    defer file.close();
+
+    var stream_source = std.io.StreamSource{ .file = file };
+
+    var tga_file = tga.TGA{};
+
+    var pixelsOpt: ?color.ColorStorage = null;
+    try tga_file.read(zigimg_test_allocator, stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+
+    defer {
+        if (pixelsOpt) |pixels| {
+            pixels.deinit(zigimg_test_allocator);
+        }
+    }
+
+    expectEq(tga_file.width(), 1280);
+    expectEq(tga_file.height(), 720);
+    expectEq(try tga_file.pixelFormat(), .Rgba32);
+
+    testing.expect(pixelsOpt != null);
+
+    if (pixelsOpt) |pixels| {
+        testing.expect(pixels == .Rgba32);
+
+        expectEq(pixels.Rgba32.len, 1280 * 720);
+
+        const test_inputs = [_]TestInput{
+            .{
+                .x = 0,
+                .y = 0,
+                .hex = 0x3b5f38,
+            },
+            .{
+                .x = 608,
+                .y = 357,
+                .hex = 0x8e6c57,
+            },
+            .{
+                .x = 972,
+                .y = 679,
+                .hex = 0xa46c41,
+            },
+        };
+
+        for (test_inputs) |input| {
+            const expected_color = color.IntegerColor8.fromHtmlHex(input.hex);
+
+            const index = tga_file.header.width * input.y + input.x;
+
+            expectEq(pixels.Rgba32[index].toColor().toIntegerColor8(), expected_color);
+        }
+    }
+}
+
+test "Read font TGA file" {
+    const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/tga/font.tga");
+    defer file.close();
+
+    var stream_source = std.io.StreamSource{ .file = file };
+
+    var tga_file = tga.TGA{};
+
+    var pixelsOpt: ?color.ColorStorage = null;
+    try tga_file.read(zigimg_test_allocator, stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+
+    defer {
+        if (pixelsOpt) |pixels| {
+            pixels.deinit(zigimg_test_allocator);
+        }
+    }
+
+    expectEq(tga_file.width(), 192);
+    expectEq(tga_file.height(), 256);
+    expectEq(try tga_file.pixelFormat(), .Rgba32);
+
+    testing.expect(pixelsOpt != null);
+
+    if (pixelsOpt) |pixels| {
+        testing.expect(pixels == .Rgba32);
+
+        expectEq(pixels.Rgba32.len, 192 * 256);
+
+        const width = tga_file.width();
+
+        expectEq(pixels.Rgba32[64 * width + 16].toColor().toIntegerColor8(), color.IntegerColor8.initRGBA(0, 0, 0, 0));
+        expectEq(pixels.Rgba32[64 * width + 17].toColor().toIntegerColor8(), color.IntegerColor8.initRGBA(209, 209, 209, 255));
+        expectEq(pixels.Rgba32[65 * width + 17].toColor().toIntegerColor8(), color.IntegerColor8.initRGBA(255, 255, 255, 255));
+    }
+}

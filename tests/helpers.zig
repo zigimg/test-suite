@@ -3,6 +3,12 @@ const testing = std.testing;
 
 pub const zigimg_test_allocator = std.testing.allocator;
 
+pub const TestInput = struct {
+    x: u32 = 0,
+    y: u32 = 0,
+    hex: u32 = 0,
+};
+
 pub fn expectEq(actual: anytype, expected: anytype) void {
     testing.expectEqual(@as(@TypeOf(actual), expected), actual);
 }

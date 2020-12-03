@@ -10,12 +10,6 @@ const testing = std.testing;
 const zigimg = @import("zigimg");
 usingnamespace @import("../helpers.zig");
 
-const TestInput = struct {
-    x: u32 = 0,
-    y: u32 = 0,
-    hex: u32 = 0,
-};
-
 test "Read leroycep1 properly" {
     const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/png/leroycep1.png");
     defer file.close();
