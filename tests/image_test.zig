@@ -244,6 +244,25 @@ test "Should detect PNG properly" {
     }
 }
 
+test "Should detect TGA properly" {
+    const imageTests = &[_][]const u8{
+        "tests/fixtures/tga/cbw8.tga",
+        "tests/fixtures/tga/ccm8.tga",
+        "tests/fixtures/tga/ctc24.tga",
+        "tests/fixtures/tga/ubw8.tga",
+        "tests/fixtures/tga/ucm8.tga",
+        "tests/fixtures/tga/utc16.tga",
+        "tests/fixtures/tga/utc24.tga",
+        "tests/fixtures/tga/utc32.tga",
+    };
+
+    for (imageTests) |image_path| {
+        const image = try Image.fromFilePath(zigimg_test_allocator, image_path);
+        defer image.deinit();
+        testing.expect(image.image_format == .Tga);
+    }
+}
+
 test "Should error on invalid path" {
     var invalidPath = Image.fromFilePath(zigimg_test_allocator, "notapathdummy");
     expectError(invalidPath, error.FileNotFound);
