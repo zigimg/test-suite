@@ -8,6 +8,7 @@ const std = @import("std");
 const testing = std.testing;
 const netpbm = zigimg.netpbm;
 const zigimg = @import("zigimg");
+const image = zigimg.image;
 usingnamespace @import("../helpers.zig");
 
 test "Load ASCII PBM image" {
@@ -295,5 +296,298 @@ test "Load binary PPM image" {
         expectEq(pixels.Rgb24[26 * 27 + 26].R, 0x88);
         expectEq(pixels.Rgb24[26 * 27 + 26].G, 0xb7);
         expectEq(pixels.Rgb24[26 * 27 + 26].B, 0x55);
+    }
+}
+
+test "Write bitmap(Grayscale1) ASCII PBM file" {
+    const grayscales = [_]u1{
+        1, 0, 0, 1,
+        1, 0, 1, 0,
+        0, 1, 0, 1,
+        1, 1, 1, 0,
+    };
+
+    const image_file_name = "zigimg_pbm_ascii_test.pbm";
+    const width = grayscales.len;
+    const height = 1;
+
+    const source_image = try image.Image.create(zigimg_test_allocator, width, height, PixelFormat.Grayscale1);
+    defer source_image.deinit();
+
+    if (source_image.pixels) |source| {
+        for (grayscales) |value, index| {
+            source.Grayscale1[index].value = value;
+        }
+    }
+
+    try source_image.writeToFilePath(image_file_name, image.ImageFormat.Pbm, image.ImageEncoderOptions{
+        .pbm = .{ .binary = false },
+    });
+
+    defer {
+        std.fs.cwd().deleteFile(image_file_name) catch unreachable;
+    }
+
+    const read_image = try image.Image.fromFilePath(zigimg_test_allocator, image_file_name);
+    defer read_image.deinit();
+
+    expectEq(read_image.width, width);
+    expectEq(read_image.height, height);
+
+    testing.expect(read_image.pixels != null);
+
+    if (read_image.pixels) |read_pixels| {
+        testing.expect(read_pixels == .Grayscale1);
+
+        for (grayscales) |grayscale_value, index| {
+            expectEq(read_pixels.Grayscale1[index].value, grayscale_value);
+        }
+    }
+}
+
+test "Write bitmap(Grayscale1) binary PBM file" {
+    const grayscales = [_]u1{
+        1, 0, 0, 1,
+        1, 0, 1, 0,
+        0, 1, 0, 1,
+        1, 1, 1, 0,
+        1, 1,
+    };
+
+    const image_file_name = "zigimg_pbm_binary_test.pbm";
+    const width = grayscales.len;
+    const height = 1;
+
+    const source_image = try image.Image.create(zigimg_test_allocator, width, height, PixelFormat.Grayscale1);
+    defer source_image.deinit();
+
+    if (source_image.pixels) |source| {
+        for (grayscales) |value, index| {
+            source.Grayscale1[index].value = value;
+        }
+    }
+
+    try source_image.writeToFilePath(image_file_name, image.ImageFormat.Pbm, image.ImageEncoderOptions{
+        .pbm = .{ .binary = true },
+    });
+
+    defer {
+        std.fs.cwd().deleteFile(image_file_name) catch unreachable;
+    }
+
+    const read_image = try image.Image.fromFilePath(zigimg_test_allocator, image_file_name);
+    defer read_image.deinit();
+
+    expectEq(read_image.width, width);
+    expectEq(read_image.height, height);
+
+    testing.expect(read_image.pixels != null);
+
+    if (read_image.pixels) |read_pixels| {
+        testing.expect(read_pixels == .Grayscale1);
+
+        for (grayscales) |grayscale_value, index| {
+            expectEq(read_pixels.Grayscale1[index].value, grayscale_value);
+        }
+    }
+}
+
+test "Write grayscale8 ASCII PGM file" {
+    const grayscales = [_]u8{
+        0,   29,  56,  85,  113, 142, 170, 199, 227, 255,
+        227, 199, 170, 142, 113, 85,  56,  29,  0,
+    };
+
+    const image_file_name = "zigimg_pgm_ascii_test.pgm";
+    const width = grayscales.len;
+    const height = 1;
+
+    const source_image = try image.Image.create(zigimg_test_allocator, width, height, PixelFormat.Grayscale8);
+    defer source_image.deinit();
+
+    if (source_image.pixels) |source| {
+        for (grayscales) |value, index| {
+            source.Grayscale8[index].value = value;
+        }
+    }
+
+    try source_image.writeToFilePath(image_file_name, image.ImageFormat.Pgm, image.ImageEncoderOptions{
+        .pgm = .{ .binary = false },
+    });
+
+    defer {
+        std.fs.cwd().deleteFile(image_file_name) catch unreachable;
+    }
+
+    const read_image = try image.Image.fromFilePath(zigimg_test_allocator, image_file_name);
+    defer read_image.deinit();
+
+    expectEq(read_image.width, width);
+    expectEq(read_image.height, height);
+
+    testing.expect(read_image.pixels != null);
+
+    if (read_image.pixels) |read_pixels| {
+        testing.expect(read_pixels == .Grayscale8);
+
+        for (grayscales) |grayscale_value, index| {
+            expectEq(read_pixels.Grayscale8[index].value, grayscale_value);
+        }
+    }
+}
+
+test "Write grayscale8 binary PGM file" {
+    const grayscales = [_]u8{
+        0,   29,  56,  85,  113, 142, 170, 199, 227, 255,
+        227, 199, 170, 142, 113, 85,  56,  29,  0,
+    };
+
+    const image_file_name = "zigimg_pgm_binary_test.pgm";
+    const width = grayscales.len;
+    const height = 1;
+
+    const source_image = try image.Image.create(zigimg_test_allocator, width, height, PixelFormat.Grayscale8);
+    defer source_image.deinit();
+
+    if (source_image.pixels) |source| {
+        for (grayscales) |value, index| {
+            source.Grayscale8[index].value = value;
+        }
+    }
+
+    try source_image.writeToFilePath(image_file_name, image.ImageFormat.Pgm, image.ImageEncoderOptions{
+        .pgm = .{ .binary = true },
+    });
+
+    defer {
+        std.fs.cwd().deleteFile(image_file_name) catch unreachable;
+    }
+
+    const read_image = try image.Image.fromFilePath(zigimg_test_allocator, image_file_name);
+    defer read_image.deinit();
+
+    expectEq(read_image.width, width);
+    expectEq(read_image.height, height);
+
+    testing.expect(read_image.pixels != null);
+
+    if (read_image.pixels) |read_pixels| {
+        testing.expect(read_pixels == .Grayscale8);
+
+        for (grayscales) |grayscale_value, index| {
+            expectEq(read_pixels.Grayscale8[index].value, grayscale_value);
+        }
+    }
+}
+
+test "Writing Rgb24 ASCII PPM format" {
+    const expected_colors = [_]u32{ 0xff0000, 0x00ff00, 0x0000ff, 0x000000, 0xffffff, 0x00ffff, 0xff00ff, 0xffff00 };
+
+    const image_file_name = "zigimg_ppm_rgb24_ascii_test.ppm";
+    const width = expected_colors.len;
+    const height = 1;
+
+    const source_image = try image.Image.create(zigimg_test_allocator, width, height, PixelFormat.Rgb24);
+    defer source_image.deinit();
+
+    testing.expect(source_image.pixels != null);
+
+    if (source_image.pixels) |pixels| {
+        testing.expect(pixels == .Rgb24);
+        testing.expect(pixels.Rgb24.len == width * height);
+
+        // R, G, B
+        pixels.Rgb24[0] = color.Rgb24.initRGB(255, 0, 0);
+        pixels.Rgb24[1] = color.Rgb24.initRGB(0, 255, 0);
+        pixels.Rgb24[2] = color.Rgb24.initRGB(0, 0, 255);
+
+        // Black, white
+        pixels.Rgb24[3] = color.Rgb24.initRGB(0, 0, 0);
+        pixels.Rgb24[4] = color.Rgb24.initRGB(255, 255, 255);
+
+        // Cyan, Magenta, Yellow
+        pixels.Rgb24[5] = color.Rgb24.initRGB(0, 255, 255);
+        pixels.Rgb24[6] = color.Rgb24.initRGB(255, 0, 255);
+        pixels.Rgb24[7] = color.Rgb24.initRGB(255, 255, 0);
+    }
+
+    try source_image.writeToFilePath(image_file_name, image.ImageFormat.Ppm, image.ImageEncoderOptions{
+        .ppm = .{ .binary = false },
+    });
+
+    defer {
+        std.fs.cwd().deleteFile(image_file_name) catch unreachable;
+    }
+
+    const read_image = try image.Image.fromFilePath(zigimg_test_allocator, image_file_name);
+    defer read_image.deinit();
+
+    expectEq(read_image.width, width);
+    expectEq(read_image.height, height);
+
+    testing.expect(read_image.pixels != null);
+
+    if (read_image.pixels) |read_image_pixels| {
+        testing.expect(read_image_pixels == .Rgb24);
+
+        for (expected_colors) |hex_color, index| {
+            expectEq(read_image_pixels.Rgb24[index].toColor().toIntegerColor8(), color.IntegerColor8.fromHtmlHex(expected_colors[index]));
+        }
+    }
+}
+
+test "Writing Rgb24 binary PPM format" {
+    const expected_colors = [_]u32{ 0xff0000, 0x00ff00, 0x0000ff, 0x000000, 0xffffff, 0x00ffff, 0xff00ff, 0xffff00 };
+
+    const image_file_name = "zigimg_ppm_rgb24_binary_test.ppm";
+    const width = expected_colors.len;
+    const height = 1;
+
+    const source_image = try image.Image.create(zigimg_test_allocator, width, height, PixelFormat.Rgb24);
+    defer source_image.deinit();
+
+    testing.expect(source_image.pixels != null);
+
+    if (source_image.pixels) |pixels| {
+        testing.expect(pixels == .Rgb24);
+        testing.expect(pixels.Rgb24.len == width * height);
+
+        // R, G, B
+        pixels.Rgb24[0] = color.Rgb24.initRGB(255, 0, 0);
+        pixels.Rgb24[1] = color.Rgb24.initRGB(0, 255, 0);
+        pixels.Rgb24[2] = color.Rgb24.initRGB(0, 0, 255);
+
+        // Black, white
+        pixels.Rgb24[3] = color.Rgb24.initRGB(0, 0, 0);
+        pixels.Rgb24[4] = color.Rgb24.initRGB(255, 255, 255);
+
+        // Cyan, Magenta, Yellow
+        pixels.Rgb24[5] = color.Rgb24.initRGB(0, 255, 255);
+        pixels.Rgb24[6] = color.Rgb24.initRGB(255, 0, 255);
+        pixels.Rgb24[7] = color.Rgb24.initRGB(255, 255, 0);
+    }
+
+    try source_image.writeToFilePath(image_file_name, image.ImageFormat.Ppm, image.ImageEncoderOptions{
+        .ppm = .{ .binary = true },
+    });
+
+    defer {
+        std.fs.cwd().deleteFile(image_file_name) catch unreachable;
+    }
+
+    const read_image = try image.Image.fromFilePath(zigimg_test_allocator, image_file_name);
+    defer read_image.deinit();
+
+    expectEq(read_image.width, width);
+    expectEq(read_image.height, height);
+
+    testing.expect(read_image.pixels != null);
+
+    if (read_image.pixels) |read_image_pixels| {
+        testing.expect(read_image_pixels == .Rgb24);
+
+        for (expected_colors) |hex_color, index| {
+            expectEq(read_image_pixels.Rgb24[index].toColor().toIntegerColor8(), color.IntegerColor8.fromHtmlHex(expected_colors[index]));
+        }
     }
 }
