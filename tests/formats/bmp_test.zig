@@ -1,4 +1,4 @@
-const ImageInStream = zigimg.ImageInStream;
+const ImageReader = zigimg.ImageReader;
 const ImageSeekStream = zigimg.ImageSeekStream;
 const PixelFormat = zigimg.PixelFormat;
 const assert = std.debug.assert;
@@ -107,7 +107,7 @@ test "Read simple version 4 24-bit RGB bitmap" {
     var stream_source = std.io.StreamSource{ .file = file };
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try theBitmap.read(zigimg_test_allocator, stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try theBitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -174,7 +174,7 @@ test "Read a valid version 5 RGBA bitmap from file" {
     var theBitmap = bmp.Bitmap{};
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try theBitmap.read(zigimg_test_allocator, stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try theBitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -191,7 +191,7 @@ test "Read a valid version 5 RGBA bitmap from memory" {
     var theBitmap = bmp.Bitmap{};
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try theBitmap.read(zigimg_test_allocator, stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try theBitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -211,6 +211,6 @@ test "Should error when reading an invalid file" {
     var theBitmap = bmp.Bitmap{};
 
     var pixels: ?color.ColorStorage = null;
-    const invalidFile = theBitmap.read(zigimg_test_allocator, stream_source.inStream(), stream_source.seekableStream(), &pixels);
+    const invalidFile = theBitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixels);
     expectError(invalidFile, errors.ImageError.InvalidMagicHeader);
 }

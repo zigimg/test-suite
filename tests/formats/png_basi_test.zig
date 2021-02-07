@@ -1,4 +1,4 @@
-const ImageInStream = zigimg.ImageInStream;
+const ImageReader = zigimg.ImageReader;
 const ImageSeekStream = zigimg.ImageSeekStream;
 const PixelFormat = zigimg.PixelFormat;
 const assert = std.debug.assert;
@@ -20,7 +20,7 @@ test "Read basi0g01 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -53,7 +53,7 @@ test "Read basi0g02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -85,7 +85,7 @@ test "Read basi0g04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -120,7 +120,7 @@ test "Read basi0g08 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -154,7 +154,7 @@ test "Read basi0g16 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -182,7 +182,7 @@ test "Read basi2c08 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -227,7 +227,7 @@ test "Read basi2c16 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -264,7 +264,7 @@ test "Read basi3p01 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -331,7 +331,7 @@ test "Read basi3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -389,7 +389,7 @@ test "Read basi3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -509,7 +509,7 @@ test "Read basi3p08 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -573,7 +573,7 @@ test "Read basi4a08 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -610,7 +610,7 @@ test "Read basi4a16 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -650,7 +650,7 @@ test "Read basi6a08 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -700,7 +700,7 @@ test "Read basi6a16 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {

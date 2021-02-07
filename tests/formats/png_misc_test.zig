@@ -1,4 +1,4 @@
-const ImageInStream = zigimg.ImageInStream;
+const ImageReader = zigimg.ImageReader;
 const ImageSeekStream = zigimg.ImageSeekStream;
 const PixelFormat = zigimg.PixelFormat;
 const assert = std.debug.assert;
@@ -20,7 +20,7 @@ test "Read leroycep1 properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -78,7 +78,7 @@ test "Read leroycep2 properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -138,7 +138,7 @@ test "Read leroycep3 properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -195,7 +195,7 @@ test "Read leroycep4 properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {

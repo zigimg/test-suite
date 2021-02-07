@@ -1,4 +1,4 @@
-const ImageInStream = zigimg.ImageInStream;
+const ImageReader = zigimg.ImageReader;
 const ImageSeekStream = zigimg.ImageSeekStream;
 const PixelFormat = zigimg.PixelFormat;
 const assert = std.debug.assert;
@@ -20,7 +20,7 @@ test "Read s01i3p01 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -62,7 +62,7 @@ test "Read s01n3p01 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -104,7 +104,7 @@ test "Read s02i3p01 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -150,7 +150,7 @@ test "Read s02n3p01 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -196,7 +196,7 @@ test "Read s03i3p01 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -246,7 +246,7 @@ test "Read s03n3p01 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -296,7 +296,7 @@ test "Read s04i3p01 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -349,7 +349,7 @@ test "Read s04n3p01 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -402,7 +402,7 @@ test "Read s05i3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -463,7 +463,7 @@ test "Read s05n3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -524,7 +524,7 @@ test "Read s06i3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -586,7 +586,7 @@ test "Read s06n3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -648,7 +648,7 @@ test "Read s07i3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -716,7 +716,7 @@ test "Read s07n3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -784,7 +784,7 @@ test "Read s08i3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -853,7 +853,7 @@ test "Read s08n3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -922,7 +922,7 @@ test "Read s09i3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -992,7 +992,7 @@ test "Read s09n3p02 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -1062,7 +1062,7 @@ test "Read s32i3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -1160,7 +1160,7 @@ test "Read s32n3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -1258,7 +1258,7 @@ test "Read s33i3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -1357,7 +1357,7 @@ test "Read s33n3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -1456,7 +1456,7 @@ test "Read s34i3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -1556,7 +1556,7 @@ test "Read s34n3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -1656,7 +1656,7 @@ test "Read s35i3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -1757,7 +1757,7 @@ test "Read s35n3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -1858,7 +1858,7 @@ test "Read s36i3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -1960,7 +1960,7 @@ test "Read s36n3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -2062,7 +2062,7 @@ test "Read s37i3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -2165,7 +2165,7 @@ test "Read s37n3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -2268,7 +2268,7 @@ test "Read s38i3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -2372,7 +2372,7 @@ test "Read s38n3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -2476,7 +2476,7 @@ test "Read s39i3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -2581,7 +2581,7 @@ test "Read s39n3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -2686,7 +2686,7 @@ test "Read s40i3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -2731,46 +2731,46 @@ test "Read s40i3p04 data properly" {
         expectEq(pixels.Bpp4.indices.len, total_size);
 
         const expected = [_]u8{
-            8,  11, 10, 6,  0,  0,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  0,  0,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 0,  0,  0,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 0,  0,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 0,  0,  0,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 0,  0,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  0,  0,  0,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  0,  0,  6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            0,  0,  0,  6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            0,  0,  10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            0,  0,  10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  0,  0,  0,  0,  0,  0,  10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  0,  0,  0,  0,  0,  0,  0,  0,  6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  0,  4,  7,  1,  8,  0,  0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  0,  0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  0,  0,  0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  0,  0,  0,  0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  0,  0,  0,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 0,  0,  0,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  0,  0,  0,  1,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  0,  0,  7,  1,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  0,  4,  7,  1,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  0,  4,  7,  1,  8,  0,  0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  0,  0,  0,  0,  0,  0,  0,  0,  6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  0,  0,  0,  0,  0,  0,  10, 6,
+            8, 11, 10, 6, 0, 0, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 0, 0, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 0, 0, 0, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 0, 0, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 0,  0, 0, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 0,  0, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 0,  0,  0, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 0,  0,  6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            0, 0,  0,  6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            0, 0,  10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            0, 0,  10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            0, 0,  0,  0, 0, 0, 0, 0, 0,  0, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            0, 0,  0,  0, 0, 0, 0, 0, 0,  0, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 0,  0, 0, 0, 0, 0,  10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 0, 0,  0, 0, 0, 0, 0,  0,  6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 0,  4, 7, 1, 8, 0,  0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 0,  0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 0, 0,  0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 0, 0, 0,  0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 0, 0, 0, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 0, 0, 0, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 0,  0, 0, 1, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 0,  0, 7, 1, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 0,  4, 7, 1, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 0,  4, 7, 1, 8, 0,  0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 0, 0,  0, 0, 0, 0, 0,  0,  6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 0,  0, 0, 0, 0, 0,  10, 6,
         };
 
         expectEq(pixels.Bpp4.indices.len, expected.len);
@@ -2792,7 +2792,7 @@ test "Read s40n3p04 data properly" {
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.inStream(), stream_source.seekableStream(), &pixelsOpt);
+    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -2837,46 +2837,46 @@ test "Read s40n3p04 data properly" {
         expectEq(pixels.Bpp4.indices.len, total_size);
 
         const expected = [_]u8{
-            8,  11, 10, 6,  0,  0,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  0,  0,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 0,  0,  0,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 0,  0,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 0,  0,  0,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 0,  0,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  0,  0,  0,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  0,  0,  6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            0,  0,  0,  6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            0,  0,  10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            0,  0,  10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  0,  0,  0,  0,  0,  0,  10, 6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  0,  0,  0,  0,  0,  0,  0,  0,  6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  0,  4,  7,  1,  8,  0,  0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  0,  0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  0,  0,  0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  0,  0,  0,  0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  0,  0,  0,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 0,  0,  0,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  0,  0,  0,  1,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  0,  0,  7,  1,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  0,  4,  7,  1,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  12, 4,  7,  1,  8,  11, 0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  0,  0,  0,  4,  7,  1,  8,  0,  0,  0,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  0,  0,  0,  0,  0,  0,  0,  0,  6,
-            8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  12, 4,  7,  1,  8,  11, 10, 6,  3,  9,  2,  5,  0,  0,  0,  0,  0,  0,  10, 6,
+            8, 11, 10, 6, 0, 0, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 0, 0, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 0, 0, 0, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 0, 0, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 0,  0, 0, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 0,  0, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 0,  0,  0, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 0,  0,  6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            0, 0,  0,  6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            0, 0,  10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            0, 0,  10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            0, 0,  0,  0, 0, 0, 0, 0, 0,  0, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            0, 0,  0,  0, 0, 0, 0, 0, 0,  0, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 0,  0, 0, 0, 0, 0,  10, 6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 0, 0,  0, 0, 0, 0, 0,  0,  6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 0,  4, 7, 1, 8, 0,  0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 0,  0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 0, 0,  0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 0, 0, 0,  0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 0, 0, 0, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 0, 0, 0, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 0,  0, 0, 1, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 0,  0, 7, 1, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 0,  4, 7, 1, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 12, 4, 7, 1, 8, 11, 0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 0, 0, 0,  4, 7, 1, 8, 0,  0,  0,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 0, 0,  0, 0, 0, 0, 0,  0,  6,
+            8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 12, 4, 7, 1, 8, 11, 10, 6, 3, 9, 2, 5, 0,  0, 0, 0, 0, 0,  10, 6,
         };
 
         expectEq(pixels.Bpp4.indices.len, expected.len);
