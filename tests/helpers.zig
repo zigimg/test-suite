@@ -9,16 +9,16 @@ pub const TestInput = struct {
     hex: u32 = 0,
 };
 
-pub fn expectEq(actual: anytype, expected: anytype) void {
-    testing.expectEqual(@as(@TypeOf(actual), expected), actual);
+pub fn expectEq(actual: anytype, expected: anytype) !void {
+    try testing.expectEqual(@as(@TypeOf(actual), expected), actual);
 }
 
-pub fn expectEqSlice(comptime T: type, actual: []const T, expected: []const T) void {
-    testing.expectEqualSlices(T, expected, actual);
+pub fn expectEqSlice(comptime T: type, actual: []const T, expected: []const T) !void {
+    try testing.expectEqualSlices(T, expected, actual);
 }
 
-pub fn expectError(actual: anytype, expected: anyerror) void {
-    testing.expectError(expected, actual);
+pub fn expectError(actual: anytype, expected: anyerror) !void {
+    try testing.expectError(expected, actual);
 }
 
 pub fn testOpenFile(allocator: *std.mem.Allocator, file_path: []const u8) !std.fs.File {

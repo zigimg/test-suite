@@ -27,7 +27,7 @@ test "Should error on non PNG images" {
         }
     }
 
-    expectError(invalidFile, errors.ImageError.InvalidMagicHeader);
+    try expectError(invalidFile, errors.ImageError.InvalidMagicHeader);
 }
 
 test "Read PNG header properly" {
@@ -48,20 +48,20 @@ test "Read PNG header properly" {
         }
     }
 
-    expectEq(pngFile.header.width, 32);
-    expectEq(pngFile.header.height, 32);
-    expectEq(pngFile.header.bit_depth, 1);
-    testing.expect(pngFile.header.color_type == .Grayscale);
-    expectEq(pngFile.header.compression_method, 0);
-    expectEq(pngFile.header.filter_method, 0);
-    testing.expect(pngFile.header.interlace_method == .Standard);
+    try expectEq(pngFile.header.width, 32);
+    try expectEq(pngFile.header.height, 32);
+    try expectEq(pngFile.header.bit_depth, 1);
+    try testing.expect(pngFile.header.color_type == .Grayscale);
+    try expectEq(pngFile.header.compression_method, 0);
+    try expectEq(pngFile.header.filter_method, 0);
+    try testing.expect(pngFile.header.interlace_method == .Standard);
 
-    testing.expect(pngFile.pixel_format == .Grayscale1);
+    try testing.expect(pngFile.pixel_format == .Grayscale1);
 
-    testing.expect(pixelsOpt != null);
+    try testing.expect(pixelsOpt != null);
 
     if (pixelsOpt) |pixels| {
-        testing.expect(pixels == .Grayscale1);
+        try testing.expect(pixels == .Grayscale1);
     }
 }
 
@@ -85,10 +85,10 @@ test "Read gAMA chunk properly" {
 
     const gammaChunkOpt = pngFile.findFirstChunk("gAMA");
 
-    testing.expect(gammaChunkOpt != null);
+    try testing.expect(gammaChunkOpt != null);
 
     if (gammaChunkOpt) |gammaChunk| {
-        expectEq(gammaChunk.gAMA.toGammaExponent(), 1.0);
+        try expectEq(gammaChunk.gAMA.toGammaExponent(), 1.0);
     }
 }
 
