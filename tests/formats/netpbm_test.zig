@@ -531,7 +531,7 @@ test "Writing Rgb24 ASCII PPM format" {
         try testing.expect(read_image_pixels == .Rgb24);
 
         for (expected_colors) |hex_color, index| {
-            try expectEq(read_image_pixels.Rgb24[index].toColor().toIntegerColor8(), color.IntegerColor8.fromHtmlHex(expected_colors[index]));
+            try expectEq(read_image_pixels.Rgb24[index].toColor().toIntegerColor8(), color.IntegerColor8.fromHtmlHex(hex_color));
         }
     }
 }
@@ -587,7 +587,7 @@ test "Writing Rgb24 binary PPM format" {
         try testing.expect(read_image_pixels == .Rgb24);
 
         for (expected_colors) |hex_color, index| {
-            try expectEq(read_image_pixels.Rgb24[index].toColor().toIntegerColor8(), color.IntegerColor8.fromHtmlHex(expected_colors[index]));
+            try expectEq(read_image_pixels.Rgb24[index].toColor().toIntegerColor8(), color.IntegerColor8.fromHtmlHex(hex_color));
         }
     }
 }
