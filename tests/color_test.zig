@@ -53,8 +53,8 @@ test "Convert Rgb555 to Color" {
     try expectEq(result.A, 255);
 }
 
-test "Convert Argb32 to Color" {
-    const originalColor = color.Argb32.initRGBA(50, 100, 150, 200);
+test "Convert Bgra32 to Color" {
+    const originalColor = color.Bgra32.initRGBA(50, 100, 150, 200);
     const result = originalColor.toColor().toIntegerColor8();
 
     try expectEq(result.R, 50);

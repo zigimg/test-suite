@@ -148,18 +148,18 @@ test "Create Image Rgb555" {
     }
 }
 
-test "Create Image Argb32" {
-    const test_image = try Image.create(zigimg_test_allocator, 24, 32, PixelFormat.Argb32, .Raw);
+test "Create Image Bgra32" {
+    const test_image = try Image.create(zigimg_test_allocator, 24, 32, PixelFormat.Bgra32, .Raw);
     defer test_image.deinit();
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Argb32);
+    try expectEq(test_image.pixel_format, PixelFormat.Bgra32);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
-        try testing.expect(pixels == .Argb32);
-        try testing.expect(pixels.Argb32.len == 24 * 32);
+        try testing.expect(pixels == .Bgra32);
+        try testing.expect(pixels.Bgra32.len == 24 * 32);
     }
 }
 
@@ -284,44 +284,44 @@ test "Should read a 24-bit bitmap" {
     try expectEq(test_image.height, 1);
 
     if (test_image.pixels) |pixels| {
-        try testing.expect(pixels == .Rgb24);
+        try testing.expect(pixels == .Bgr24);
 
-        const red = pixels.Rgb24[0];
+        const red = pixels.Bgr24[0];
         try expectEq(red.R, 0xFF);
         try expectEq(red.G, 0x00);
         try expectEq(red.B, 0x00);
 
-        const green = pixels.Rgb24[1];
+        const green = pixels.Bgr24[1];
         try expectEq(green.R, 0x00);
         try expectEq(green.G, 0xFF);
         try expectEq(green.B, 0x00);
 
-        const blue = pixels.Rgb24[2];
+        const blue = pixels.Bgr24[2];
         try expectEq(blue.R, 0x00);
         try expectEq(blue.G, 0x00);
         try expectEq(blue.B, 0xFF);
 
-        const cyan = pixels.Rgb24[3];
+        const cyan = pixels.Bgr24[3];
         try expectEq(cyan.R, 0x00);
         try expectEq(cyan.G, 0xFF);
         try expectEq(cyan.B, 0xFF);
 
-        const magenta = pixels.Rgb24[4];
+        const magenta = pixels.Bgr24[4];
         try expectEq(magenta.R, 0xFF);
         try expectEq(magenta.G, 0x00);
         try expectEq(magenta.B, 0xFF);
 
-        const yellow = pixels.Rgb24[5];
+        const yellow = pixels.Bgr24[5];
         try expectEq(yellow.R, 0xFF);
         try expectEq(yellow.G, 0xFF);
         try expectEq(yellow.B, 0x00);
 
-        const black = pixels.Rgb24[6];
+        const black = pixels.Bgr24[6];
         try expectEq(black.R, 0x00);
         try expectEq(black.G, 0x00);
         try expectEq(black.B, 0x00);
 
-        const white = pixels.Rgb24[7];
+        const white = pixels.Bgr24[7];
         try expectEq(white.R, 0xFF);
         try expectEq(white.G, 0xFF);
         try expectEq(white.B, 0xFF);
