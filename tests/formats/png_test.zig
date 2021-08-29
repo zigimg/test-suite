@@ -96,6 +96,7 @@ test "Png Suite" {
     _ = @import("png_basn_test.zig");
     _ = @import("png_basi_test.zig");
     _ = @import("png_odd_sizes_test.zig");
+    _ = @import("png_bkgd_test.zig");
 }
 
 test "Misc tests" {
