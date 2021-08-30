@@ -163,6 +163,21 @@ test "Create Image Bgra32" {
     }
 }
 
+test "Create Image Float32" {
+    const test_image = try Image.create(zigimg_test_allocator, 24, 32, PixelFormat.Float32, .Raw);
+    defer test_image.deinit();
+
+    try expectEq(test_image.width, 24);
+    try expectEq(test_image.height, 32);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Float32);
+    try testing.expect(test_image.pixels != null);
+
+    if (test_image.pixels) |pixels| {
+        try testing.expect(pixels == .Float32);
+        try testing.expect(pixels.Float32.len == 24 * 32);
+    }
+}
+
 test "Should detect BMP properly" {
     const image_tests = &[_][]const u8{
         "tests/fixtures/bmp/simple_v4.bmp",
