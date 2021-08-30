@@ -29,7 +29,7 @@ test "PCX bpp1 (linear)" {
 
     try expectEq(pcxFile.width, 27);
     try expectEq(pcxFile.height, 27);
-    try expectEq(pcxFile.pixel_format, PixelFormat.Bpp1);
+    try expectEq(try pcxFile.pixelFormat(), PixelFormat.Bpp1);
 
     try testing.expect(pixelsOpt != null);
 
@@ -76,7 +76,7 @@ test "PCX bpp4 (linear)" {
 
     try expectEq(pcxFile.width, 27);
     try expectEq(pcxFile.height, 27);
-    try expectEq(pcxFile.pixel_format, PixelFormat.Bpp4);
+    try expectEq(try pcxFile.pixelFormat(), PixelFormat.Bpp4);
 
     try testing.expect(pixelsOpt != null);
 
@@ -124,7 +124,7 @@ test "PCX bpp8 (linear)" {
 
     try expectEq(pcxFile.width, 27);
     try expectEq(pcxFile.height, 27);
-    try expectEq(pcxFile.pixel_format, PixelFormat.Bpp8);
+    try expectEq(try pcxFile.pixelFormat(), PixelFormat.Bpp8);
 
     try testing.expect(pixelsOpt != null);
 
@@ -177,7 +177,7 @@ test "PCX bpp24 (planar)" {
 
     try expectEq(pcxFile.width, 27);
     try expectEq(pcxFile.height, 27);
-    try expectEq(pcxFile.pixel_format, PixelFormat.Rgb24);
+    try expectEq(try pcxFile.pixelFormat(), PixelFormat.Rgb24);
 
     try testing.expect(pixelsOpt != null);
 

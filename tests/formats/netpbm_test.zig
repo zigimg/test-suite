@@ -30,7 +30,7 @@ test "Load ASCII PBM image" {
 
     try expectEq(pbmFile.header.width, 8);
     try expectEq(pbmFile.header.height, 16);
-    try expectEq(pbmFile.pixel_format, PixelFormat.Grayscale1);
+    try expectEq(try pbmFile.pixelFormat(), PixelFormat.Grayscale1);
 
     try testing.expect(pixelsOpt != null);
 
@@ -62,7 +62,7 @@ test "Load binary PBM image" {
 
     try expectEq(pbmFile.header.width, 8);
     try expectEq(pbmFile.header.height, 16);
-    try expectEq(pbmFile.pixel_format, PixelFormat.Grayscale1);
+    try expectEq(try pbmFile.pixelFormat(), PixelFormat.Grayscale1);
 
     try testing.expect(pixelsOpt != null);
 
@@ -94,7 +94,7 @@ test "Load ASCII PGM 8-bit grayscale image" {
 
     try expectEq(pgmFile.header.width, 16);
     try expectEq(pgmFile.header.height, 24);
-    try expectEq(pgmFile.pixel_format, PixelFormat.Grayscale8);
+    try expectEq(try pgmFile.pixelFormat(), PixelFormat.Grayscale8);
 
     try testing.expect(pixelsOpt != null);
 
@@ -126,7 +126,7 @@ test "Load Binary PGM 8-bit grayscale image" {
 
     try expectEq(pgmFile.header.width, 16);
     try expectEq(pgmFile.header.height, 24);
-    try expectEq(pgmFile.pixel_format, PixelFormat.Grayscale8);
+    try expectEq(try pgmFile.pixelFormat(), PixelFormat.Grayscale8);
 
     try testing.expect(pixelsOpt != null);
 
@@ -158,7 +158,7 @@ test "Load ASCII PGM 16-bit grayscale image" {
 
     try expectEq(pgmFile.header.width, 8);
     try expectEq(pgmFile.header.height, 16);
-    try expectEq(pgmFile.pixel_format, PixelFormat.Grayscale16);
+    try expectEq(try pgmFile.pixelFormat(), PixelFormat.Grayscale16);
 
     try testing.expect(pixelsOpt != null);
 
@@ -190,7 +190,7 @@ test "Load Binary PGM 16-bit grayscale image" {
 
     try expectEq(pgmFile.header.width, 8);
     try expectEq(pgmFile.header.height, 16);
-    try expectEq(pgmFile.pixel_format, PixelFormat.Grayscale16);
+    try expectEq(try pgmFile.pixelFormat(), PixelFormat.Grayscale16);
 
     try testing.expect(pixelsOpt != null);
 
@@ -222,7 +222,7 @@ test "Load ASCII PPM image" {
 
     try expectEq(ppmFile.header.width, 27);
     try expectEq(ppmFile.header.height, 27);
-    try expectEq(ppmFile.pixel_format, PixelFormat.Rgb24);
+    try expectEq(try ppmFile.pixelFormat(), PixelFormat.Rgb24);
 
     try testing.expect(pixelsOpt != null);
 
@@ -270,7 +270,7 @@ test "Load binary PPM image" {
 
     try expectEq(ppmFile.header.width, 27);
     try expectEq(ppmFile.header.height, 27);
-    try expectEq(ppmFile.pixel_format, PixelFormat.Rgb24);
+    try expectEq(try ppmFile.pixelFormat(), PixelFormat.Rgb24);
 
     try testing.expect(pixelsOpt != null);
 

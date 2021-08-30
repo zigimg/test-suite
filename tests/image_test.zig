@@ -14,7 +14,7 @@ test "Create Image Bpp1" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.getPixelFormat(), PixelFormat.Bpp1);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Bpp1);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -30,7 +30,7 @@ test "Create Image Bpp2" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.getPixelFormat(), PixelFormat.Bpp2);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Bpp2);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -46,7 +46,7 @@ test "Create Image Bpp4" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.getPixelFormat(), PixelFormat.Bpp4);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Bpp4);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -62,7 +62,7 @@ test "Create Image Bpp8" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.getPixelFormat(), PixelFormat.Bpp8);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Bpp8);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -78,7 +78,7 @@ test "Create Image Bpp16" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.getPixelFormat(), PixelFormat.Bpp16);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Bpp16);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -94,7 +94,7 @@ test "Create Image Rgb24" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.getPixelFormat(), PixelFormat.Rgb24);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Rgb24);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -109,7 +109,7 @@ test "Create Image Rgba32" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.getPixelFormat(), PixelFormat.Rgba32);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Rgba32);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -124,7 +124,7 @@ test "Create Image Rgb565" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.getPixelFormat(), PixelFormat.Rgb565);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Rgb565);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -139,7 +139,7 @@ test "Create Image Rgb555" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.getPixelFormat(), PixelFormat.Rgb555);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Rgb555);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -154,7 +154,7 @@ test "Create Image Bgra32" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.getPixelFormat(), PixelFormat.Bgra32);
+    try expectEq(test_image.pixelFormat(), PixelFormat.Bgra32);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {

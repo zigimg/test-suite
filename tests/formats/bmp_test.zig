@@ -12,89 +12,89 @@ usingnamespace @import("../helpers.zig");
 
 const MemoryRGBABitmap = @embedFile("../fixtures/bmp/windows_rgba_v5.bmp");
 
-fn verifyBitmapRGBAV5(theBitmap: bmp.Bitmap, pixelsOpt: ?color.ColorStorage) !void {
-    try expectEq(theBitmap.fileHeader.size, 153738);
-    try expectEq(theBitmap.fileHeader.reserved, 0);
-    try expectEq(theBitmap.fileHeader.pixelOffset, 138);
-    try expectEq(theBitmap.width(), 240);
-    try expectEq(theBitmap.height(), 160);
+fn verifyBitmapRGBAV5(the_bitmap: bmp.Bitmap, pixels_opt: ?color.ColorStorage) !void {
+    try expectEq(the_bitmap.file_header.size, 153738);
+    try expectEq(the_bitmap.file_header.reserved, 0);
+    try expectEq(the_bitmap.file_header.pixel_offset, 138);
+    try expectEq(the_bitmap.width(), 240);
+    try expectEq(the_bitmap.height(), 160);
 
-    try expectEqSlice(u8, @tagName(theBitmap.infoHeader), "V5");
+    try expectEqSlice(u8, @tagName(the_bitmap.info_header), "V5");
 
-    _ = switch (theBitmap.infoHeader) {
+    _ = switch (the_bitmap.info_header) {
         .V5 => |v5Header| {
-            try expectEq(v5Header.headerSize, bmp.BitmapInfoHeaderV5.HeaderSize);
+            try expectEq(v5Header.header_size, bmp.BitmapInfoHeaderV5.HeaderSize);
             try expectEq(v5Header.width, 240);
             try expectEq(v5Header.height, 160);
-            try expectEq(v5Header.colorPlane, 1);
-            try expectEq(v5Header.bitCount, 32);
-            try expectEq(v5Header.compressionMethod, bmp.CompressionMethod.Bitfields);
-            try expectEq(v5Header.imageRawSize, 240 * 160 * 4);
-            try expectEq(v5Header.horizontalResolution, 2835);
-            try expectEq(v5Header.verticalResolution, 2835);
-            try expectEq(v5Header.paletteSize, 0);
-            try expectEq(v5Header.importantColors, 0);
-            try expectEq(v5Header.redMask, 0x00ff0000);
-            try expectEq(v5Header.greenMask, 0x0000ff00);
-            try expectEq(v5Header.blueMask, 0x000000ff);
-            try expectEq(v5Header.alphaMask, 0xff000000);
-            try expectEq(v5Header.colorSpace, bmp.BitmapColorSpace.sRgb);
-            try expectEq(v5Header.cieEndPoints.red.x, 0);
-            try expectEq(v5Header.cieEndPoints.red.y, 0);
-            try expectEq(v5Header.cieEndPoints.red.z, 0);
-            try expectEq(v5Header.cieEndPoints.green.x, 0);
-            try expectEq(v5Header.cieEndPoints.green.y, 0);
-            try expectEq(v5Header.cieEndPoints.green.z, 0);
-            try expectEq(v5Header.cieEndPoints.blue.x, 0);
-            try expectEq(v5Header.cieEndPoints.blue.y, 0);
-            try expectEq(v5Header.cieEndPoints.blue.z, 0);
-            try expectEq(v5Header.gammaRed, 0);
-            try expectEq(v5Header.gammaGreen, 0);
-            try expectEq(v5Header.gammaBlue, 0);
+            try expectEq(v5Header.color_plane, 1);
+            try expectEq(v5Header.bit_count, 32);
+            try expectEq(v5Header.compression_method, bmp.CompressionMethod.Bitfields);
+            try expectEq(v5Header.image_raw_size, 240 * 160 * 4);
+            try expectEq(v5Header.horizontal_resolution, 2835);
+            try expectEq(v5Header.vertical_resolution, 2835);
+            try expectEq(v5Header.palette_size, 0);
+            try expectEq(v5Header.important_colors, 0);
+            try expectEq(v5Header.red_mask, 0x00ff0000);
+            try expectEq(v5Header.green_mask, 0x0000ff00);
+            try expectEq(v5Header.blue_mask, 0x000000ff);
+            try expectEq(v5Header.alpha_mask, 0xff000000);
+            try expectEq(v5Header.color_space, bmp.BitmapColorSpace.sRgb);
+            try expectEq(v5Header.cie_end_points.red.x, 0);
+            try expectEq(v5Header.cie_end_points.red.y, 0);
+            try expectEq(v5Header.cie_end_points.red.z, 0);
+            try expectEq(v5Header.cie_end_points.green.x, 0);
+            try expectEq(v5Header.cie_end_points.green.y, 0);
+            try expectEq(v5Header.cie_end_points.green.z, 0);
+            try expectEq(v5Header.cie_end_points.blue.x, 0);
+            try expectEq(v5Header.cie_end_points.blue.y, 0);
+            try expectEq(v5Header.cie_end_points.blue.z, 0);
+            try expectEq(v5Header.gamma_red, 0);
+            try expectEq(v5Header.gamma_green, 0);
+            try expectEq(v5Header.gamma_blue, 0);
             try expectEq(v5Header.intent, bmp.BitmapIntent.Graphics);
-            try expectEq(v5Header.profileData, 0);
-            try expectEq(v5Header.profileSize, 0);
+            try expectEq(v5Header.profile_data, 0);
+            try expectEq(v5Header.profile_size, 0);
             try expectEq(v5Header.reserved, 0);
         },
         else => unreachable,
     };
 
-    try testing.expect(pixelsOpt != null);
+    try testing.expect(pixels_opt != null);
 
-    if (pixelsOpt) |pixels| {
+    if (pixels_opt) |pixels| {
         try testing.expect(pixels == .Bgra32);
 
         try expectEq(pixels.len(), 240 * 160);
 
-        const firstPixel = pixels.Bgra32[0];
-        try expectEq(firstPixel.R, 0xFF);
-        try expectEq(firstPixel.G, 0xFF);
-        try expectEq(firstPixel.B, 0xFF);
-        try expectEq(firstPixel.A, 0xFF);
+        const first_pixel = pixels.Bgra32[0];
+        try expectEq(first_pixel.R, 0xFF);
+        try expectEq(first_pixel.G, 0xFF);
+        try expectEq(first_pixel.B, 0xFF);
+        try expectEq(first_pixel.A, 0xFF);
 
-        const secondPixel = pixels.Bgra32[1];
-        try expectEq(secondPixel.R, 0xFF);
-        try expectEq(secondPixel.G, 0x00);
-        try expectEq(secondPixel.B, 0x00);
-        try expectEq(secondPixel.A, 0xFF);
+        const second_pixel = pixels.Bgra32[1];
+        try expectEq(second_pixel.R, 0xFF);
+        try expectEq(second_pixel.G, 0x00);
+        try expectEq(second_pixel.B, 0x00);
+        try expectEq(second_pixel.A, 0xFF);
 
-        const thirdPixel = pixels.Bgra32[2];
-        try expectEq(thirdPixel.R, 0x00);
-        try expectEq(thirdPixel.G, 0xFF);
-        try expectEq(thirdPixel.B, 0x00);
-        try expectEq(thirdPixel.A, 0xFF);
+        const third_pixel = pixels.Bgra32[2];
+        try expectEq(third_pixel.R, 0x00);
+        try expectEq(third_pixel.G, 0xFF);
+        try expectEq(third_pixel.B, 0x00);
+        try expectEq(third_pixel.A, 0xFF);
 
-        const fourthPixel = pixels.Bgra32[3];
-        try expectEq(fourthPixel.R, 0x00);
-        try expectEq(fourthPixel.G, 0x00);
-        try expectEq(fourthPixel.B, 0xFF);
-        try expectEq(fourthPixel.A, 0xFF);
+        const fourth_pixel = pixels.Bgra32[3];
+        try expectEq(fourth_pixel.R, 0x00);
+        try expectEq(fourth_pixel.G, 0x00);
+        try expectEq(fourth_pixel.B, 0xFF);
+        try expectEq(fourth_pixel.A, 0xFF);
 
-        const coloredPixel = pixels.Bgra32[(22 * 240) + 16];
-        try expectEq(coloredPixel.R, 195);
-        try expectEq(coloredPixel.G, 195);
-        try expectEq(coloredPixel.B, 255);
-        try expectEq(coloredPixel.A, 255);
+        const colored_pixel = pixels.Bgra32[(22 * 240) + 16];
+        try expectEq(colored_pixel.R, 195);
+        try expectEq(colored_pixel.G, 195);
+        try expectEq(colored_pixel.B, 255);
+        try expectEq(colored_pixel.A, 255);
     }
 }
 
@@ -102,25 +102,25 @@ test "Read simple version 4 24-bit RGB bitmap" {
     const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/bmp/simple_v4.bmp");
     defer file.close();
 
-    var theBitmap = bmp.Bitmap{};
+    var the_bitmap = bmp.Bitmap{};
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var pixelsOpt: ?color.ColorStorage = null;
-    try theBitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
+    var pixels_opt: ?color.ColorStorage = null;
+    try the_bitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixels_opt);
 
     defer {
-        if (pixelsOpt) |pixels| {
+        if (pixels_opt) |pixels| {
             pixels.deinit(zigimg_test_allocator);
         }
     }
 
-    try expectEq(theBitmap.width(), 8);
-    try expectEq(theBitmap.height(), 1);
+    try expectEq(the_bitmap.width(), 8);
+    try expectEq(the_bitmap.height(), 1);
 
-    try testing.expect(pixelsOpt != null);
+    try testing.expect(pixels_opt != null);
 
-    if (pixelsOpt) |pixels| {
+    if (pixels_opt) |pixels| {
         try testing.expect(pixels == .Bgr24);
 
         const red = pixels.Bgr24[0];
@@ -171,35 +171,35 @@ test "Read a valid version 5 RGBA bitmap from file" {
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var theBitmap = bmp.Bitmap{};
+    var the_bitmap = bmp.Bitmap{};
 
-    var pixelsOpt: ?color.ColorStorage = null;
-    try theBitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
+    var pixels_opt: ?color.ColorStorage = null;
+    try the_bitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixels_opt);
 
     defer {
-        if (pixelsOpt) |pixels| {
+        if (pixels_opt) |pixels| {
             pixels.deinit(zigimg_test_allocator);
         }
     }
 
-    try verifyBitmapRGBAV5(theBitmap, pixelsOpt);
+    try verifyBitmapRGBAV5(the_bitmap, pixels_opt);
 }
 
 test "Read a valid version 5 RGBA bitmap from memory" {
     var stream_source = std.io.StreamSource{ .const_buffer = std.io.fixedBufferStream(MemoryRGBABitmap) };
 
-    var theBitmap = bmp.Bitmap{};
+    var the_bitmap = bmp.Bitmap{};
 
-    var pixelsOpt: ?color.ColorStorage = null;
-    try theBitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
+    var pixels_opt: ?color.ColorStorage = null;
+    try the_bitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixels_opt);
 
     defer {
-        if (pixelsOpt) |pixels| {
+        if (pixels_opt) |pixels| {
             pixels.deinit(zigimg_test_allocator);
         }
     }
 
-    try verifyBitmapRGBAV5(theBitmap, pixelsOpt);
+    try verifyBitmapRGBAV5(the_bitmap, pixels_opt);
 }
 
 test "Should error when reading an invalid file" {
@@ -208,9 +208,9 @@ test "Should error when reading an invalid file" {
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var theBitmap = bmp.Bitmap{};
+    var the_bitmap = bmp.Bitmap{};
 
     var pixels: ?color.ColorStorage = null;
-    const invalidFile = theBitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixels);
+    const invalidFile = the_bitmap.read(zigimg_test_allocator, stream_source.reader(), stream_source.seekableStream(), &pixels);
     try expectError(invalidFile, errors.ImageError.InvalidMagicHeader);
 }

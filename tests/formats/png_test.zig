@@ -16,11 +16,11 @@ test "Should error on non PNG images" {
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var pngFile = png.PNG.init(zigimg_test_allocator);
-    defer pngFile.deinit();
+    var png_file = png.PNG.init(zigimg_test_allocator);
+    defer png_file.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    const invalidFile = pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
+    const invalidFile = png_file.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
     defer {
         if (pixelsOpt) |pixels| {
             pixels.deinit(zigimg_test_allocator);
@@ -36,11 +36,11 @@ test "Read PNG header properly" {
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var pngFile = png.PNG.init(zigimg_test_allocator);
-    defer pngFile.deinit();
+    var png_file = png.PNG.init(zigimg_test_allocator);
+    defer png_file.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
+    try png_file.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -48,15 +48,13 @@ test "Read PNG header properly" {
         }
     }
 
-    try expectEq(pngFile.header.width, 32);
-    try expectEq(pngFile.header.height, 32);
-    try expectEq(pngFile.header.bit_depth, 1);
-    try testing.expect(pngFile.header.color_type == .Grayscale);
-    try expectEq(pngFile.header.compression_method, 0);
-    try expectEq(pngFile.header.filter_method, 0);
-    try testing.expect(pngFile.header.interlace_method == .Standard);
-
-    try testing.expect(pngFile.pixel_format == .Grayscale1);
+    try expectEq(png_file.header.width, 32);
+    try expectEq(png_file.header.height, 32);
+    try expectEq(png_file.header.bit_depth, 1);
+    try testing.expect(png_file.header.color_type == .Grayscale);
+    try expectEq(png_file.header.compression_method, 0);
+    try expectEq(png_file.header.filter_method, 0);
+    try testing.expect(png_file.header.interlace_method == .Standard);
 
     try testing.expect(pixelsOpt != null);
 
@@ -71,11 +69,11 @@ test "Read gAMA chunk properly" {
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var pngFile = png.PNG.init(zigimg_test_allocator);
-    defer pngFile.deinit();
+    var png_file = png.PNG.init(zigimg_test_allocator);
+    defer png_file.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
-    try pngFile.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
+    try png_file.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
 
     defer {
         if (pixelsOpt) |pixels| {
@@ -83,7 +81,7 @@ test "Read gAMA chunk properly" {
         }
     }
 
-    const gammaChunkOpt = pngFile.findFirstChunk("gAMA");
+    const gammaChunkOpt = png_file.findFirstChunk("gAMA");
 
     try testing.expect(gammaChunkOpt != null);
 
