@@ -14,7 +14,7 @@ test "Create Image Bpp1" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Bpp1);
+    try expectEq(test_image.getPixelFormat(), PixelFormat.Bpp1);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -30,7 +30,7 @@ test "Create Image Bpp2" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Bpp2);
+    try expectEq(test_image.getPixelFormat(), PixelFormat.Bpp2);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -46,7 +46,7 @@ test "Create Image Bpp4" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Bpp4);
+    try expectEq(test_image.getPixelFormat(), PixelFormat.Bpp4);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -62,7 +62,7 @@ test "Create Image Bpp8" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Bpp8);
+    try expectEq(test_image.getPixelFormat(), PixelFormat.Bpp8);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -78,7 +78,7 @@ test "Create Image Bpp16" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Bpp16);
+    try expectEq(test_image.getPixelFormat(), PixelFormat.Bpp16);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -94,7 +94,7 @@ test "Create Image Rgb24" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Rgb24);
+    try expectEq(test_image.getPixelFormat(), PixelFormat.Rgb24);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -109,7 +109,7 @@ test "Create Image Rgba32" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Rgba32);
+    try expectEq(test_image.getPixelFormat(), PixelFormat.Rgba32);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -124,7 +124,7 @@ test "Create Image Rgb565" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Rgb565);
+    try expectEq(test_image.getPixelFormat(), PixelFormat.Rgb565);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -139,7 +139,7 @@ test "Create Image Rgb555" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Rgb555);
+    try expectEq(test_image.getPixelFormat(), PixelFormat.Rgb555);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -154,7 +154,7 @@ test "Create Image Bgra32" {
 
     try expectEq(test_image.width, 24);
     try expectEq(test_image.height, 32);
-    try expectEq(test_image.pixel_format, PixelFormat.Bgra32);
+    try expectEq(test_image.getPixelFormat(), PixelFormat.Bgra32);
     try testing.expect(test_image.pixels != null);
 
     if (test_image.pixels) |pixels| {
@@ -163,30 +163,36 @@ test "Create Image Bgra32" {
     }
 }
 
-const MemoryRGBABitmap = @embedFile("fixtures/bmp/windows_rgba_v5.bmp");
-
 test "Should detect BMP properly" {
-    const imageTests = &[_][]const u8{
+    const image_tests = &[_][]const u8{
         "tests/fixtures/bmp/simple_v4.bmp",
         "tests/fixtures/bmp/windows_rgba_v5.bmp",
     };
 
-    for (imageTests) |image_path| {
+    for (image_tests) |image_path| {
         const test_image = try Image.fromFilePath(zigimg_test_allocator, image_path);
         defer test_image.deinit();
         try testing.expect(test_image.image_format == .Bmp);
     }
 }
 
+test "Should detect Memory BMP properly" {
+    const MemoryRGBABitmap = @embedFile("fixtures/bmp/windows_rgba_v5.bmp");
+
+    const test_image = try Image.fromMemory(zigimg_test_allocator, MemoryRGBABitmap);
+    defer test_image.deinit();
+    try testing.expect(test_image.image_format == .Bmp);
+}
+
 test "Should detect PCX properly" {
-    const imageTests = &[_][]const u8{
+    const image_tests = &[_][]const u8{
         "tests/fixtures/pcx/test-bpp1.pcx",
         "tests/fixtures/pcx/test-bpp4.pcx",
         "tests/fixtures/pcx/test-bpp8.pcx",
         "tests/fixtures/pcx/test-bpp24.pcx",
     };
 
-    for (imageTests) |image_path| {
+    for (image_tests) |image_path| {
         const test_image = try Image.fromFilePath(zigimg_test_allocator, image_path);
         defer test_image.deinit();
         try testing.expect(test_image.image_format == .Pcx);
@@ -194,12 +200,12 @@ test "Should detect PCX properly" {
 }
 
 test "Should detect PBM properly" {
-    const imageTests = &[_][]const u8{
+    const image_tests = &[_][]const u8{
         "tests/fixtures/netpbm/pbm_ascii.pbm",
         "tests/fixtures/netpbm/pbm_binary.pbm",
     };
 
-    for (imageTests) |image_path| {
+    for (image_tests) |image_path| {
         const test_image = try Image.fromFilePath(zigimg_test_allocator, image_path);
         defer test_image.deinit();
         try testing.expect(test_image.image_format == .Pbm);
@@ -207,14 +213,14 @@ test "Should detect PBM properly" {
 }
 
 test "Should detect PGM properly" {
-    const imageTests = &[_][]const u8{
+    const image_tests = &[_][]const u8{
         "tests/fixtures/netpbm/pgm_ascii_grayscale8.pgm",
         "tests/fixtures/netpbm/pgm_binary_grayscale8.pgm",
         "tests/fixtures/netpbm/pgm_ascii_grayscale16.pgm",
         "tests/fixtures/netpbm/pgm_binary_grayscale16.pgm",
     };
 
-    for (imageTests) |image_path| {
+    for (image_tests) |image_path| {
         const test_image = try Image.fromFilePath(zigimg_test_allocator, image_path);
         defer test_image.deinit();
         try testing.expect(test_image.image_format == .Pgm);
@@ -222,12 +228,12 @@ test "Should detect PGM properly" {
 }
 
 test "Should detect PPM properly" {
-    const imageTests = &[_][]const u8{
+    const image_tests = &[_][]const u8{
         "tests/fixtures/netpbm/ppm_ascii_rgb24.ppm",
         "tests/fixtures/netpbm/ppm_binary_rgb24.ppm",
     };
 
-    for (imageTests) |image_path| {
+    for (image_tests) |image_path| {
         const test_image = try Image.fromFilePath(zigimg_test_allocator, image_path);
         defer test_image.deinit();
         try testing.expect(test_image.image_format == .Ppm);
@@ -235,12 +241,12 @@ test "Should detect PPM properly" {
 }
 
 test "Should detect PNG properly" {
-    const imageTests = &[_][]const u8{
+    const image_tests = &[_][]const u8{
         "tests/fixtures/png/basn0g01.png",
         "tests/fixtures/png/basi0g01.png",
     };
 
-    for (imageTests) |image_path| {
+    for (image_tests) |image_path| {
         const test_image = try Image.fromFilePath(zigimg_test_allocator, image_path);
         defer test_image.deinit();
         try testing.expect(test_image.image_format == .Png);
@@ -248,7 +254,7 @@ test "Should detect PNG properly" {
 }
 
 test "Should detect TGA properly" {
-    const imageTests = &[_][]const u8{
+    const image_tests = &[_][]const u8{
         "tests/fixtures/tga/cbw8.tga",
         "tests/fixtures/tga/ccm8.tga",
         "tests/fixtures/tga/ctc24.tga",
@@ -259,7 +265,7 @@ test "Should detect TGA properly" {
         "tests/fixtures/tga/utc32.tga",
     };
 
-    for (imageTests) |image_path| {
+    for (image_tests) |image_path| {
         const test_image = try Image.fromFilePath(zigimg_test_allocator, image_path);
         defer test_image.deinit();
         try testing.expect(test_image.image_format == .Tga);
