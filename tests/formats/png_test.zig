@@ -8,35 +8,35 @@ const png = zigimg.png;
 const std = @import("std");
 const testing = std.testing;
 const zigimg = @import("zigimg");
-usingnamespace @import("../helpers.zig");
+const helpers = @import("../helpers.zig");
 
 test "Should error on non PNG images" {
-    const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/bmp/simple_v4.bmp");
+    const file = try helpers.testOpenFile(helpers.zigimg_test_allocator, "tests/fixtures/bmp/simple_v4.bmp");
     defer file.close();
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var png_file = png.PNG.init(zigimg_test_allocator);
+    var png_file = png.PNG.init(helpers.zigimg_test_allocator);
     defer png_file.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
     const invalidFile = png_file.read(stream_source.reader(), stream_source.seekableStream(), &pixelsOpt);
     defer {
         if (pixelsOpt) |pixels| {
-            pixels.deinit(zigimg_test_allocator);
+            pixels.deinit(helpers.zigimg_test_allocator);
         }
     }
 
-    try expectError(invalidFile, errors.ImageError.InvalidMagicHeader);
+    try helpers.expectError(invalidFile, errors.ImageError.InvalidMagicHeader);
 }
 
 test "Read PNG header properly" {
-    const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/png/basn0g01.png");
+    const file = try helpers.testOpenFile(helpers.zigimg_test_allocator, "tests/fixtures/png/basn0g01.png");
     defer file.close();
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var png_file = png.PNG.init(zigimg_test_allocator);
+    var png_file = png.PNG.init(helpers.zigimg_test_allocator);
     defer png_file.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
@@ -44,16 +44,16 @@ test "Read PNG header properly" {
 
     defer {
         if (pixelsOpt) |pixels| {
-            pixels.deinit(zigimg_test_allocator);
+            pixels.deinit(helpers.zigimg_test_allocator);
         }
     }
 
-    try expectEq(png_file.header.width, 32);
-    try expectEq(png_file.header.height, 32);
-    try expectEq(png_file.header.bit_depth, 1);
+    try helpers.expectEq(png_file.header.width, 32);
+    try helpers.expectEq(png_file.header.height, 32);
+    try helpers.expectEq(png_file.header.bit_depth, 1);
     try testing.expect(png_file.header.color_type == .Grayscale);
-    try expectEq(png_file.header.compression_method, 0);
-    try expectEq(png_file.header.filter_method, 0);
+    try helpers.expectEq(png_file.header.compression_method, 0);
+    try helpers.expectEq(png_file.header.filter_method, 0);
     try testing.expect(png_file.header.interlace_method == .Standard);
 
     try testing.expect(pixelsOpt != null);
@@ -64,12 +64,12 @@ test "Read PNG header properly" {
 }
 
 test "Read gAMA chunk properly" {
-    const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/png/basn0g01.png");
+    const file = try helpers.testOpenFile(helpers.zigimg_test_allocator, "tests/fixtures/png/basn0g01.png");
     defer file.close();
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var png_file = png.PNG.init(zigimg_test_allocator);
+    var png_file = png.PNG.init(helpers.zigimg_test_allocator);
     defer png_file.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
@@ -77,7 +77,7 @@ test "Read gAMA chunk properly" {
 
     defer {
         if (pixelsOpt) |pixels| {
-            pixels.deinit(zigimg_test_allocator);
+            pixels.deinit(helpers.zigimg_test_allocator);
         }
     }
 
@@ -86,7 +86,7 @@ test "Read gAMA chunk properly" {
     try testing.expect(gammaChunkOpt != null);
 
     if (gammaChunkOpt) |gammaChunk| {
-        try expectEq(gammaChunk.gAMA.toGammaExponent(), 1.0);
+        try helpers.expectEq(gammaChunk.gAMA.toGammaExponent(), 1.0);
     }
 }
 

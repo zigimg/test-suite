@@ -8,15 +8,15 @@ const png = zigimg.png;
 const std = @import("std");
 const testing = std.testing;
 const zigimg = @import("zigimg");
-usingnamespace @import("../helpers.zig");
+const helpers = @import("../helpers.zig");
 
 test "Read leroycep1 properly" {
-    const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/png/leroycep1.png");
+    const file = try helpers.testOpenFile(helpers.zigimg_test_allocator, "tests/fixtures/png/leroycep1.png");
     defer file.close();
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var pngFile = png.PNG.init(zigimg_test_allocator);
+    var pngFile = png.PNG.init(helpers.zigimg_test_allocator);
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
@@ -24,20 +24,20 @@ test "Read leroycep1 properly" {
 
     defer {
         if (pixelsOpt) |pixels| {
-            pixels.deinit(zigimg_test_allocator);
+            pixels.deinit(helpers.zigimg_test_allocator);
         }
     }
 
-    try expectEq(pngFile.header.width, 17);
-    try expectEq(pngFile.header.height, 12);
-    try expectEq(pngFile.header.color_type, png.ColorType.Truecolor);
+    try helpers.expectEq(pngFile.header.width, 17);
+    try helpers.expectEq(pngFile.header.height, 12);
+    try helpers.expectEq(pngFile.header.color_type, png.ColorType.Truecolor);
 
     try testing.expect(pixelsOpt != null);
 
     if (pixelsOpt) |pixels| {
         try testing.expect(pixels == PixelFormat.Rgb24);
 
-        const test_inputs = [_]TestInput{
+        const test_inputs = [_]helpers.TestInput{
             .{
                 .x = 7,
                 .hex = 0x062fc2,
@@ -63,18 +63,18 @@ test "Read leroycep1 properly" {
 
             const index = pngFile.header.width * input.y + input.x;
 
-            try expectEq(pixels.Rgb24[index].toColor().toIntegerColor8(), expected_color);
+            try helpers.expectEq(pixels.Rgb24[index].toColor().toIntegerColor8(), expected_color);
         }
     }
 }
 
 test "Read leroycep2 properly" {
-    const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/png/leroycep2.png");
+    const file = try helpers.testOpenFile(helpers.zigimg_test_allocator, "tests/fixtures/png/leroycep2.png");
     defer file.close();
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var pngFile = png.PNG.init(zigimg_test_allocator);
+    var pngFile = png.PNG.init(helpers.zigimg_test_allocator);
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
@@ -82,20 +82,20 @@ test "Read leroycep2 properly" {
 
     defer {
         if (pixelsOpt) |pixels| {
-            pixels.deinit(zigimg_test_allocator);
+            pixels.deinit(helpers.zigimg_test_allocator);
         }
     }
 
-    try expectEq(pngFile.header.width, 37);
-    try expectEq(pngFile.header.height, 39);
-    try expectEq(pngFile.header.color_type, png.ColorType.TruecolorAlpha);
+    try helpers.expectEq(pngFile.header.width, 37);
+    try helpers.expectEq(pngFile.header.height, 39);
+    try helpers.expectEq(pngFile.header.color_type, png.ColorType.TruecolorAlpha);
 
     try testing.expect(pixelsOpt != null);
 
     if (pixelsOpt) |pixels| {
         try testing.expect(pixels == PixelFormat.Rgba32);
 
-        const test_inputs = [_]TestInput{
+        const test_inputs = [_]helpers.TestInput{
             .{
                 .x = 8,
                 .y = 9,
@@ -123,18 +123,18 @@ test "Read leroycep2 properly" {
 
             const index = pngFile.header.width * input.y + input.x;
 
-            try expectEq(pixels.Rgba32[index].toColor().toIntegerColor8(), expected_color);
+            try helpers.expectEq(pixels.Rgba32[index].toColor().toIntegerColor8(), expected_color);
         }
     }
 }
 
 test "Read leroycep3 properly" {
-    const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/png/leroycep3.png");
+    const file = try helpers.testOpenFile(helpers.zigimg_test_allocator, "tests/fixtures/png/leroycep3.png");
     defer file.close();
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var pngFile = png.PNG.init(zigimg_test_allocator);
+    var pngFile = png.PNG.init(helpers.zigimg_test_allocator);
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
@@ -142,20 +142,20 @@ test "Read leroycep3 properly" {
 
     defer {
         if (pixelsOpt) |pixels| {
-            pixels.deinit(zigimg_test_allocator);
+            pixels.deinit(helpers.zigimg_test_allocator);
         }
     }
 
-    try expectEq(pngFile.header.width, 10);
-    try expectEq(pngFile.header.height, 10);
-    try expectEq(pngFile.header.color_type, png.ColorType.Truecolor);
+    try helpers.expectEq(pngFile.header.width, 10);
+    try helpers.expectEq(pngFile.header.height, 10);
+    try helpers.expectEq(pngFile.header.color_type, png.ColorType.Truecolor);
 
     try testing.expect(pixelsOpt != null);
 
     if (pixelsOpt) |pixels| {
         try testing.expect(pixels == PixelFormat.Rgb24);
 
-        const test_inputs = [_]TestInput{
+        const test_inputs = [_]helpers.TestInput{
             .{
                 .x = 3,
                 .hex = 0xc3600b,
@@ -180,18 +180,18 @@ test "Read leroycep3 properly" {
 
             const index = pngFile.header.width * input.y + input.x;
 
-            try expectEq(pixels.Rgb24[index].toColor().toIntegerColor8(), expected_color);
+            try helpers.expectEq(pixels.Rgb24[index].toColor().toIntegerColor8(), expected_color);
         }
     }
 }
 
 test "Read leroycep4 properly" {
-    const file = try testOpenFile(zigimg_test_allocator, "tests/fixtures/png/leroycep4.png");
+    const file = try helpers.testOpenFile(helpers.zigimg_test_allocator, "tests/fixtures/png/leroycep4.png");
     defer file.close();
 
     var stream_source = std.io.StreamSource{ .file = file };
 
-    var pngFile = png.PNG.init(zigimg_test_allocator);
+    var pngFile = png.PNG.init(helpers.zigimg_test_allocator);
     defer pngFile.deinit();
 
     var pixelsOpt: ?color.ColorStorage = null;
@@ -199,20 +199,20 @@ test "Read leroycep4 properly" {
 
     defer {
         if (pixelsOpt) |pixels| {
-            pixels.deinit(zigimg_test_allocator);
+            pixels.deinit(helpers.zigimg_test_allocator);
         }
     }
 
-    try expectEq(pngFile.header.width, 10);
-    try expectEq(pngFile.header.height, 10);
-    try expectEq(pngFile.header.color_type, png.ColorType.Truecolor);
+    try helpers.expectEq(pngFile.header.width, 10);
+    try helpers.expectEq(pngFile.header.height, 10);
+    try helpers.expectEq(pngFile.header.color_type, png.ColorType.Truecolor);
 
     try testing.expect(pixelsOpt != null);
 
     if (pixelsOpt) |pixels| {
         try testing.expect(pixels == PixelFormat.Rgb24);
 
-        const test_inputs = [_]TestInput{
+        const test_inputs = [_]helpers.TestInput{
             .{
                 .x = 3,
                 .hex = 0x88fb86,
@@ -243,7 +243,7 @@ test "Read leroycep4 properly" {
 
             const index = pngFile.header.width * input.y + input.x;
 
-            try expectEq(pixels.Rgb24[index].toColor().toIntegerColor8(), expected_color);
+            try helpers.expectEq(pixels.Rgb24[index].toColor().toIntegerColor8(), expected_color);
         }
     }
 }
