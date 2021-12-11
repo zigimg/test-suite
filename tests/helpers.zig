@@ -21,7 +21,7 @@ pub fn expectError(actual: anytype, expected: anyerror) !void {
     try testing.expectError(expected, actual);
 }
 
-pub fn testOpenFile(allocator: *std.mem.Allocator, file_path: []const u8) !std.fs.File {
+pub fn testOpenFile(allocator: std.mem.Allocator, file_path: []const u8) !std.fs.File {
     const cwd = std.fs.cwd();
 
     var resolved_path = try std.fs.path.resolve(allocator, &[_][]const u8{file_path});
