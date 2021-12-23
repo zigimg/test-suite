@@ -287,6 +287,16 @@ test "Should detect TGA properly" {
     }
 }
 
+test "Should detect QOI properly" {
+    const image_tests = &[_][]const u8{"tests/fixtures/qoi/zero.qoi"};
+
+    for (image_tests) |image_path| {
+        const test_image = try Image.fromFilePath(helpers.zigimg_test_allocator, image_path);
+        defer test_image.deinit();
+        try testing.expect(test_image.image_format == .Qoi);
+    }
+}
+
 test "Should error on invalid path" {
     var invalidPath = Image.fromFilePath(helpers.zigimg_test_allocator, "notapathdummy");
     try helpers.expectError(invalidPath, error.FileNotFound);
