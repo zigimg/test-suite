@@ -10,7 +10,9 @@
             "request": "launch",
             "program": "zig-cache/tests/test.exe",
             "preLaunchTask": "Build_Test",
-            "args": [],
+            "args": [
+                " C:\\Programmation\\Zig\\zig\\out\\install\\x64-Release\\bin\\zig.exe"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
