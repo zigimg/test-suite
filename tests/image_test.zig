@@ -297,6 +297,19 @@ test "Should detect QOI properly" {
     }
 }
 
+test "Should detect JPEG properly" {
+    const image_tests = &[_][]const u8{
+        "tests/fixtures/jpeg/tuba.jpg",
+        "tests/fixtures/jpeg/huff_simple0.jpg",
+    };
+
+    for (image_tests) |image_path| {
+        const test_image = try Image.fromFilePath(helpers.zigimg_test_allocator, image_path);
+        defer test_image.deinit();
+        try testing.expect(test_image.image_format == .Jpeg);
+    }
+}
+
 test "Should error on invalid path" {
     var invalidPath = Image.fromFilePath(helpers.zigimg_test_allocator, "notapathdummy");
     try helpers.expectError(invalidPath, error.FileNotFound);
