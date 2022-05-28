@@ -1,2 +1,3 @@
-# test-suite
-Zig Image Library test suite, isolated from the library for easier distribution
+# Zigimg test-suite
+
+Contains the images used in the test suite of [zigimg](https://github.com/zigimg/zigimg) library.
