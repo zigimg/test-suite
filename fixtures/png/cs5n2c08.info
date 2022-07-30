@@ -1,0 +1,11 @@
+Dimensions: 32x32
+Bit Depth: 8
+Color Type: rgb_color
+Compression Method: deflate
+Filter Method: adaptive
+Interlace Method: none
+
+gAMA: 100000
+sBIT (significant bits): R => 5, G => 5, B => 5
+IDAT Count: 114, Total Size: 46.1552734375KiB
+────────────────────────────────────────────────

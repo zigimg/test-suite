@@ -1,0 +1,12 @@
+Dimensions: 32x32
+Bit Depth: 8
+Color Type: indexed
+Compression Method: deflate
+Filter Method: adaptive
+Interlace Method: none
+
+gAMA: 100000
+sBIT (significant bits): R => 3, G => 3, B => 3
+PLTE with 256 entries
+IDAT Count: 113, Total Size: 46.0595703125KiB
+────────────────────────────────────────────────

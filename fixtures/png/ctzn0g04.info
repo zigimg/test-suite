@@ -1,0 +1,37 @@
+Dimensions: 32x32
+Bit Depth: 4
+Color Type: grayscale
+Compression Method: deflate
+Filter Method: adaptive
+Interlace Method: none
+
+gAMA: 100000
+tEXt Length 14B:
+               Keyword: Title
+                  Text: PngSuite
+tEXt Length 49B:
+               Keyword: Author
+                  Text: Willem A.J. van Schaik
+(willem@schaik.com)
+zTXt Length 65B:
+               Keyword: Copyright
+           Compression: Zlib Deflate
+                  Text: Copyright Willem van Schaik, Singapore 1995-96
+zTXt Length 187B:
+               Keyword: Description
+           Compression: Zlib Deflate
+                  Text: A compilation of a set of images created to test the
+various color-types of the PNG format. Included are
+black&white, color, paletted, with alpha channel, with
+transparency formats. All bit-depths allowed according
+to the spec are present.
+zTXt Length 64B:
+               Keyword: Software
+           Compression: Zlib Deflate
+                  Text: Created on a NeXTstation color using "pnmtopng".
+zTXt Length 29B:
+               Keyword: Disclaimer
+           Compression: Zlib Deflate
+                  Text: Freeware.
+IDAT Count: 121, Total Size: 48.7529296875KiB
+────────────────────────────────────────────────

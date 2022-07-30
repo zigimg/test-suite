@@ -1,0 +1,12 @@
+Dimensions: 8x8
+Bit Depth: 8
+Color Type: rgb_color
+Compression Method: deflate
+Filter Method: adaptive
+Interlace Method: none
+
+gAMA: 100000
+sBIT (significant bits): R => 4, G => 4, B => 4
+sYHp Length 9B: 1 x 1
+IDAT Count: 55, Total Size: 28.1025390625KiB
+────────────────────────────────────────────────
