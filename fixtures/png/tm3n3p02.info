@@ -5,7 +5,7 @@ Compression Method: deflate
 Filter Method: adaptive
 Interlace Method: none
 
-SNRt Length 3B: { 0, 85, 170 }
+tRNS Length 3B: { 0, 85, 170 }
 PLTE with 4 entries
 IDAT Count: 382, Total Size: 66.69140625KiB
 ────────────────────────────────────────────────

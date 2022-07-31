@@ -6,7 +6,7 @@ Filter Method: adaptive
 Interlace Method: none
 
 gAMA: 100000
-SNRt Length 2B: 65535
-DGKb Length 2B: 65535
+tRNS Length 2B: 65535
+bKGD Length 2B: 65535
 IDAT Count: 489, Total Size: 70.0478515625KiB
 ────────────────────────────────────────────────

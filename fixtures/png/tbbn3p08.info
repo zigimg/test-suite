@@ -6,8 +6,8 @@ Filter Method: adaptive
 Interlace Method: none
 
 gAMA: 100000
-SNRt Length 1B: { 0 }
-DGKb Length 1B: Index 245
+tRNS Length 1B: { 0 }
+bKGD Length 1B: Index 245
 PLTE with 256 entries
 IDAT Count: 381, Total Size: 66.671875KiB
 ────────────────────────────────────────────────

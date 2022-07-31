@@ -6,7 +6,7 @@ Filter Method: adaptive
 Interlace Method: none
 
 gAMA: 100000
-SNRt Length 1B: { 0 }
+tRNS Length 1B: { 0 }
 PLTE with 256 entries
 IDAT Count: 88, Total Size: 34.8115234375KiB
 ────────────────────────────────────────────────

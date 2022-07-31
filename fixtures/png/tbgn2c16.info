@@ -6,7 +6,7 @@ Filter Method: adaptive
 Interlace Method: none
 
 gAMA: 100000
-SNRt Length 6B: RGB 65535, 65535, 65535
-DGKb Length 6B: RGB 0, 65535, 0
+tRNS Length 6B: RGB 65535, 65535, 65535
+bKGD Length 6B: RGB 0, 65535, 0
 IDAT Count: 119, Total Size: 48.44921875KiB
 ────────────────────────────────────────────────

@@ -6,7 +6,7 @@ Filter Method: adaptive
 Interlace Method: none
 
 gAMA: 100000
-TSIh Length 512B
+hIST Length 512B
 PLTE with 256 entries
 IDAT Count: 352, Total Size: 49.478515625KiB
 ────────────────────────────────────────────────

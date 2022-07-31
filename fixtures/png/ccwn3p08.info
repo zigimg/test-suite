@@ -6,7 +6,7 @@ Filter Method: adaptive
 Interlace Method: none
 
 gAMA: 100000
-MRHc Length 32B
+cHRM:
     White x,y: 31270, 32900
       Red x,y: 64000, 33000
     Green x,y: 30000, 60000
