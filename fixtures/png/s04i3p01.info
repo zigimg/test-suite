@@ -8,5 +8,5 @@ Interlace Method: adam7
 gAMA: 100000
 sBIT (significant bits): R => 4, G => 4, B => 4
 PLTE with 2 entries
-IDAT Count: 73, Total Size: 32.0048828125KiB
+IDAT Count: 1, Total Size: 20B
 ────────────────────────────────────────────────

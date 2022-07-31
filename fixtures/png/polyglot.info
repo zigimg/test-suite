@@ -1,12 +1,9 @@
-Dimensions: 32x32
+Dimensions: 256x144
 Bit Depth: 8
-Color Type: indexed
+Color Type: rgb_color
 Compression Method: deflate
 Filter Method: adaptive
 Interlace Method: none
 
-gAMA: 100000
-hIST Length 512B
-PLTE with 256 entries
-IDAT Count: 1, Total Size: 433B
+IDAT Count: 1, Total Size: 3.4443359375KiB
 ────────────────────────────────────────────────
