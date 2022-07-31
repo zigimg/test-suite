@@ -1,0 +1,46 @@
+Dimensions: 32x32
+Bit Depth: 4
+Color Type: grayscale
+Compression Method: deflate
+Filter Method: adaptive
+Interlace Method: none
+
+gAMA: 100000
+iTXt Length 27B:
+               Keyword: Title
+            Compressed: No
+          Language Tag: fi
+    Translated Keyword: Otsikko
+                  Text: PngSuite
+iTXt Length 57B:
+               Keyword: Author
+            Compressed: No
+          Language Tag: fi
+    Translated Keyword: Tekijä
+                  Text: Willem van Schaik (willem@schaik.com)
+iTXt Length 72B:
+               Keyword: Copyright
+            Compressed: No
+          Language Tag: fi
+    Translated Keyword: Tekijänoikeudet
+                  Text: Copyright Willem van Schaik, Kanada 2011
+iTXt Length 235B:
+               Keyword: Description
+            Compressed: No
+          Language Tag: fi
+    Translated Keyword: Kuvaus
+                  Text: kokoelma joukon kuvia luotu testata eri väri-tyyppisiä PNG-muodossa. Mukana on mustavalkoinen, väri, paletted, alpha-kanava, avoimuuden muodossa. Kaikki bit-syvyydessä mukaan sallittua spec on ​​läsnä.
+iTXt Length 63B:
+               Keyword: Software
+            Compressed: No
+          Language Tag: fi
+    Translated Keyword: Ohjelmistot
+                  Text: Luotu NeXTstation väriä "pnmtopng".
+iTXt Length 45B:
+               Keyword: Disclaimer
+            Compressed: No
+          Language Tag: fi
+    Translated Keyword: Vastuuvapauslauseke
+                  Text: Freeware.
+IDAT Count: 112, Total Size: 45.986328125KiB
+────────────────────────────────────────────────

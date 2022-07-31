@@ -1,0 +1,46 @@
+Dimensions: 32x32
+Bit Depth: 4
+Color Type: grayscale
+Compression Method: deflate
+Filter Method: adaptive
+Interlace Method: none
+
+gAMA: 100000
+iTXt Length 25B:
+               Keyword: Title
+            Compressed: No
+          Language Tag: en
+    Translated Keyword: Title
+                  Text: PngSuite
+iTXt Length 56B:
+               Keyword: Author
+            Compressed: No
+          Language Tag: en
+    Translated Keyword: Author
+                  Text: Willem van Schaik (willem@schaik.com)
+iTXt Length 65B:
+               Keyword: Copyright
+            Compressed: No
+          Language Tag: en
+    Translated Keyword: Copyright
+                  Text: Copyright Willem van Schaik, Canada 2011
+iTXt Length 268B:
+               Keyword: Description
+            Compressed: No
+          Language Tag: en
+    Translated Keyword: Description
+                  Text: A compilation of a set of images created to test the various color-types of the PNG format. Included are black&white, color, paletted, with alpha channel, with transparency formats. All bit-depths allowed according to the spec are present.
+iTXt Length 71B:
+               Keyword: Software
+            Compressed: No
+          Language Tag: en
+    Translated Keyword: Software
+                  Text: Created on a NeXTstation color using "pnmtopng".
+iTXt Length 36B:
+               Keyword: Disclaimer
+            Compressed: No
+          Language Tag: en
+    Translated Keyword: Disclaimer
+                  Text: Freeware.
+IDAT Count: 375, Total Size: 63.458984375KiB
+────────────────────────────────────────────────

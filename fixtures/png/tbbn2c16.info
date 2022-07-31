@@ -1,0 +1,12 @@
+Dimensions: 32x32
+Bit Depth: 16
+Color Type: rgb_color
+Compression Method: deflate
+Filter Method: adaptive
+Interlace Method: none
+
+gAMA: 100000
+SNRt Length 6B: RGB 65535, 65535, 65535
+DGKb Length 6B: RGB 0, 0, 65535
+IDAT Count: 49, Total Size: 23.3291015625KiB
+────────────────────────────────────────────────

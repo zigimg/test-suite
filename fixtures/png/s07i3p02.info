@@ -1,0 +1,12 @@
+Dimensions: 7x7
+Bit Depth: 2
+Color Type: indexed
+Compression Method: deflate
+Filter Method: adaptive
+Interlace Method: adam7
+
+gAMA: 100000
+sBIT (significant bits): R => 4, G => 4, B => 4
+PLTE with 4 entries
+IDAT Count: 101, Total Size: 41.43359375KiB
+────────────────────────────────────────────────

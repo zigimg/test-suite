@@ -1,0 +1,46 @@
+Dimensions: 32x32
+Bit Depth: 4
+Color Type: grayscale
+Compression Method: deflate
+Filter Method: adaptive
+Interlace Method: none
+
+gAMA: 100000
+iTXt Length 32B:
+               Keyword: Title
+            Compressed: No
+          Language Tag: el
+    Translated Keyword: Τίτλος
+                  Text: PngSuite
+iTXt Length 70B:
+               Keyword: Author
+            Compressed: No
+          Language Tag: el
+    Translated Keyword: Συγγραφέας
+                  Text: Willem van Schaik (willem@schaik.com)
+iTXt Length 137B:
+               Keyword: Copyright
+            Compressed: No
+          Language Tag: el
+    Translated Keyword: Πνευματικά δικαιώματα
+                  Text: Πνευματικά δικαιώματα Schaik van Willem, Καναδάς 2011
+iTXt Length 501B:
+               Keyword: Description
+            Compressed: No
+          Language Tag: el
+    Translated Keyword: Περιγραφή
+                  Text: Μια συλλογή από ένα σύνολο εικόνων που δημιουργήθηκαν για τη δοκιμή των διαφόρων χρωμάτων-τύπων του μορφή PNG. Περιλαμβάνονται οι ασπρόμαυρες, χρώμα, paletted, με άλφα κανάλι, με μορφές της διαφάνειας. Όλοι λίγο-βάθη επιτρέπεται σύμφωνα με το spec είναι παρόντες.
+iTXt Length 137B:
+               Keyword: Software
+            Compressed: No
+          Language Tag: el
+    Translated Keyword: Λογισμικό
+                  Text: Δημιουργήθηκε σε ένα χρώμα NeXTstation χρησιμοποιώντας "pnmtopng".
+iTXt Length 67B:
+               Keyword: Disclaimer
+            Compressed: No
+          Language Tag: el
+    Translated Keyword: Αποποίηση
+                  Text: Δωρεάν λογισμικό.
+IDAT Count: 50, Total Size: 23.419921875KiB
+────────────────────────────────────────────────
