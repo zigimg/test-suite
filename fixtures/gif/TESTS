@@ -63,7 +63,6 @@ dispose-keep
 dispose-restore-background
 dispose-restore-previous
 animation-multi-image
-animation-multi-image-explicit-zero-delay
 comment
 large-comment
 nul-comment
