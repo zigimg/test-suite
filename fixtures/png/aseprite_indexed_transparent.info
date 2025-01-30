@@ -1,0 +1,12 @@
+Dimensions: 16x16
+Bit Depth: 8
+Color Type: indexed
+Compression Method: deflate
+Filter Method: adaptive
+Interlace Method: none
+
+sRGB: Perceptual
+tRNS Length 32B: { 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255 } ...
+PLTE with 256 entries
+IDAT Count: 1, Total Size: 47B
+────────────────────────────────────────────────
