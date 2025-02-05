@@ -7,6 +7,6 @@ Interlace Method: none
 
 sRGB: Perceptual
 tRNS Length 32B: { 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255 } ...
-PLTE with 256 entries
+PLTE with 32 entries
 IDAT Count: 1, Total Size: 47B
 ────────────────────────────────────────────────
